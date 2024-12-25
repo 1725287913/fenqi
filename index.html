@@ -222,6 +222,12 @@
         },
         calculate() {
           const price = parseFloat(this.phonePrice);
+          if (isNaN(price) || price <= 0) {
+            this.totalRent = null;
+            this.payments = [];
+            return;
+          }
+
           let totalMultiplier, monthlyRent;
 
           switch (this.leaseTerm) {
